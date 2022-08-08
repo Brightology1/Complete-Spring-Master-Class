@@ -1,7 +1,7 @@
 package com.brightology.SpringBoot.service;
 
 import com.brightology.SpringBoot.entity.Department;
-import com.brightology.SpringBoot.repository.DepartmentRepository;
+import com.brightology.SpringBoot.service.repository.DepartmentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -53,6 +53,16 @@ public class DepartmentServiceImp implements DepartmentService {
         }
 
         return departmentRepository.save(depDB);
+    }
+
+    @Override
+    public Department fetchDepartmentByName(String departmentName) {
+        return departmentRepository.findByDepartmentNameIgnoreCase(departmentName);
+    }
+
+    @Override
+    public Department fetchDepartmentByAddress(String departmentAddress) {
+        return departmentRepository.findByDepartmentAddressIgnoreCase(departmentAddress);
     }
 }
 
