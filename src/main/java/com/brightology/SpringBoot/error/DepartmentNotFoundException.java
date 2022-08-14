@@ -21,5 +21,3 @@ public class DepartmentNotFoundException extends Exception {
         super(message, cause, enableSuppression, writableStackTrace);
     }
 }
-
-//3:11:02

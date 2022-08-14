@@ -1,6 +1,7 @@
 package com.brightology.SpringBoot.controller;
 
 import com.brightology.SpringBoot.entity.Department;
+import com.brightology.SpringBoot.error.DepartmentNotFoundException;
 import com.brightology.SpringBoot.service.DepartmentService;
 import com.brightology.SpringBoot.service.DepartmentServiceImp;
 import org.slf4j.LoggerFactory;
@@ -31,7 +32,7 @@ public class DepartmentController {
     }
 
     @GetMapping("/departments/{id}")
-    public Department fetchDepartmentById(@PathVariable("id") Long departmentId){
+    public Department fetchDepartmentById(@PathVariable("id") Long departmentId) throws DepartmentNotFoundException {
         return departmentService.fetchDepartmentById(departmentId);
     }
     @DeleteMapping("/departments/{id}")

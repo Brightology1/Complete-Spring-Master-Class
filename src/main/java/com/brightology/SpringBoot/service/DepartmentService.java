@@ -1,6 +1,7 @@
 package com.brightology.SpringBoot.service;
 
 import com.brightology.SpringBoot.entity.Department;
+import com.brightology.SpringBoot.error.DepartmentNotFoundException;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
@@ -11,7 +12,7 @@ public interface DepartmentService {
 
     public List<Department> fetchDepartmentList();
 
-    public Department fetchDepartmentById(Long departmentId);
+    public Department fetchDepartmentById(Long departmentId) throws DepartmentNotFoundException;
 
     public void deleteDepartmentById(Long departmentId);
 

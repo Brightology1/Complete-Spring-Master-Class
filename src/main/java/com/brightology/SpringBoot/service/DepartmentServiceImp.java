@@ -1,12 +1,14 @@
 package com.brightology.SpringBoot.service;
 
 import com.brightology.SpringBoot.entity.Department;
+import com.brightology.SpringBoot.error.DepartmentNotFoundException;
 import com.brightology.SpringBoot.service.repository.DepartmentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 @Service
 public class DepartmentServiceImp implements DepartmentService {
@@ -24,8 +26,14 @@ public class DepartmentServiceImp implements DepartmentService {
     }
 
     @Override
-    public Department fetchDepartmentById(Long departmentId) {
-        return departmentRepository.findById(departmentId).get();
+    public Department fetchDepartmentById(Long departmentId) throws DepartmentNotFoundException {
+        Optional<Department> department = departmentRepository.findById(departmentId);
+
+        if(!department.isPresent()){
+            throw new DepartmentNotFoundException("Department not found");
+        }
+
+        return department.get();
     }
 
     @Override
