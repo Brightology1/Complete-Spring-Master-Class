@@ -22,6 +22,3 @@ public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionH
                 .body(message);
     }
 }
-
-
-//3:20.20
