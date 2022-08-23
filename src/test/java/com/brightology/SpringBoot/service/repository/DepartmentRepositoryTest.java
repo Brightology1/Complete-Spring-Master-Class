@@ -38,5 +38,3 @@ class DepartmentRepositoryTest {
         assertEquals(department.getDepartmentName(), "E/E");
     }
 }
-
-//3:50:31
