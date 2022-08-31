@@ -1,4 +1,14 @@
+server:
+  port: 8181
+
+  spring:
+    profiles:
+      active: qa
+
+---
+
 spring:
+  profiles: dev
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
     username: root
@@ -8,10 +18,54 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: 'true'
+  config:
+    activate:
+      on-profile:
 welcome:
   message: Welcome to the world of Spring-Boot, and With God I will make it Amen!!!
-server:
-  port: 8181
+
+---
+
+spring:
+  profiles: qa
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    url: jdbc:mysql://localhost:3306/springdb-qa
+    password: taulogy1!
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: 'true'
+  config:
+    activate:
+      on-profile:
+welcome:
+  message: Welcome to the world of Spring-Boot, and With God I will make it Amen!!!
+
+  management:
+    endpoints:
+      web:
+        exposure:
+          include: "*"
+          exclude: "env,beans"
 
 
-#4:08:42
+---
+
+spring:
+  profiles: prod
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    url: jdbc:mysql://localhost:3306/springdb-prod
+    password: taulogy1!
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: 'true'
+  config:
+    activate:
+      on-profile:
+welcome:
+  message: Welcome to the world of Spring-Boot, and With God I will make it Amen!!!
